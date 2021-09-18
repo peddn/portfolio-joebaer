@@ -1,21 +1,26 @@
 const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const RemovePlugin = require('remove-files-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     // https://stackoverflow.com/questions/35903246/how-to-create-multiple-output-paths-in-webpack-config
     entry: {
-        'dist/static/bundle': './src/js/main.js',
+        'static/main': './src/js/main.js',
     },
     output: {
-        path: path.resolve(__dirname),
-        filename: '[name].js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name]-bundle.js',
+        clean: true,
     },
     devtool: 'inline-source-map',
-     devServer: {
-        static: './dist',
+    devServer: {
+        static: {
+          directory: path.join(__dirname, 'src/assets'),
+        },
+        port: 8000,
+        watchFiles: [ 'src/**/*' ],
     },
     module: {
         rules: [
@@ -34,31 +39,17 @@ module.exports = {
         ]
     },
     plugins: [
-        new RemovePlugin({
-            before: {
-                root: '.',
-                include: [
-                    'dist'
-                ],
-                log: true,
-                recursive: true
-            },
-            watch: {
-                // parameters for "before watch compilation" stage.
-            },
-            after: {
-                // parameters for "after normal and watch compilation" stage.
-            }
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            inject: 'body'
         }),
         new CopyPlugin({
             patterns: [
-                { from: './src/img', to: './dist/img', force: true },
-                { from: './src/html', to: './dist', force: true },
-            ],
-            options: {}
+                { from: './src/assets', to: './assets', force: true },
+            ]
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css'
+            filename: '[name]-bundle.css'
         })
     ]
 };

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --mode development --watch",
-    "development": "webpack serve --mode development --open",
+    "start": "webpack serve --mode development --open",
     "production": "webpack --mode production"
   },
   "author": "S",
@@ -15,6 +15,7 @@
     "bulma": "^0.9.3",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.7",
+    "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^1.6.2",
     "node-sass": "^6.0.1",
     "remove-files-webpack-plugin": "^1.4.5",
