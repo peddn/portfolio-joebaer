@@ -3,8 +3,7 @@
 ## first time installation
 
 ### prerequisites
-* nodejs > 14.17.6
-  [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+* nodejs > 14.17.6 ([https://nodejs.org/en/download/](https://nodejs.org/en/download/))
 
 ### installation
 ```bash
