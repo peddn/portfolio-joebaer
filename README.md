@@ -20,11 +20,13 @@ in the first terminal:
 ```bash
 # npm run development
 ```
+This starts the development server with automatic live rebuild and reload.  
 
 ### build for production
 in the second terminal:
 ```bash
 # npm run production
 ```
+This builds the application and exports the the `.html`, `.css` and `.js` files to the `dist` directory. These files are ready to upload to the production webserver.
 
 Enjoy!
