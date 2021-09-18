@@ -13,12 +13,16 @@
 
 ## workflow
 
+Open two terminals.
+
 ### start development environment
+in the first terminal:
 ```bash
 # npm run development
 ```
 
 ### build for production
+in the second terminal:
 ```bash
 # npm run production
 ```
